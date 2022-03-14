@@ -1,0 +1,42 @@
+{
+        "version": "0.2.0",
+		"configurations": [
+		{
+			"name": "Run and debug",
+			"type": "cppdbg",
+			"request": "launch",
+
+//            "logging": {"engineLogging": true, "exceptions": true, "programOutput": true, "trace": true},
+			"targetArchitecture": "x64",
+
+//			"stopAtEntry": true,
+			"stopAtConnect": true,
+
+			"miDebuggerPath" : "/home/markphillips/development/gdb-11-XMOS/xgdb-build/obj/gdb/gdb",
+			"miDebuggerServerAddress": "localhost:12345",
+            "externalConsole": true,
+            "MIMode": "gdb",
+			"launchCompleteCommand": "exec-continue",
+			"cwd": "/home/markphillips/development/gdb-11-XMOS/test_target",
+			"program" : "/home/markphillips/development/gdb-11-XMOS/test_target/bin/image_n0c0.elf",
+
+            "customLaunchSetupCommands": [
+				{"text" : "target extended-remote :12345", "description": "load prog", "ignoreFailures": false},
+			    {"text" : "file /home/markphillips/development/gdb-11-XMOS/test_target/bin/image_n0c0.elf", "ignoreFailures" : false },
+				{"text" : "load", "description": "load", "ignoreFailures": false },
+			],
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description":  "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                }
+            ]
+        },
+		]
+}

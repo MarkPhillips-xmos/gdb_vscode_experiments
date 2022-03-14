@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Network xmlns="http://www.xmos.com"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
+  <Type>Board</Type>
+  <Name>xcore.ai Explorer Kit</Name>
+
+  <Declarations>
+    <Declaration>tileref tile[2]</Declaration>
+  </Declarations>
+
+  <Packages>
+    <Package id="0" Type="XS3-UnA-1024-FB265">
+      <Nodes>
+        <Node Id="0" InPackageId="0" Type="XS3-L16A-1024">
+          <Tile Number="0" Reference="tile[0]">
+            <Port Location="XS1_PORT_1B" Name="PORT_SQI_CS"/>
+            <Port Location="XS1_PORT_1C" Name="PORT_SQI_SCLK"/>
+            <Port Location="XS1_PORT_4B" Name="PORT_SQI_SIO"/>
+            
+            <Port Location="XS1_PORT_4C" Name="PORT_LEDS"/>
+            <Port Location="XS1_PORT_4D" Name="PORT_BUTTONS"/>
+            
+            <Port Location="XS1_PORT_1I"  Name="WIFI_WIRQ"/>
+            <Port Location="XS1_PORT_1J"  Name="WIFI_MOSI"/>
+            <Port Location="XS1_PORT_4E"  Name="WIFI_WUP_RST_N"/>
+            <Port Location="XS1_PORT_4F"  Name="WIFI_CS_N"/>
+            <Port Location="XS1_PORT_1L"  Name="WIFI_CLK"/>
+            <Port Location="XS1_PORT_1M"  Name="WIFI_MISO"/>
+          </Tile>
+          <Tile Number="1" Reference="tile[1]">
+            <!-- Mic related ports -->
+            <Port Location="XS1_PORT_1G" Name="PORT_PDM_CLK"/>
+            <Port Location="XS1_PORT_1F" Name="PORT_PDM_DATA"/>
+
+            <!-- Audio ports -->
+            <Port Location="XS1_PORT_1D" Name="PORT_MCLK_IN"/>
+            <Port Location="XS1_PORT_1C" Name="PORT_I2S_BCLK"/>
+            <Port Location="XS1_PORT_1B" Name="PORT_I2S_LRCLK"/>
+            <Port Location="XS1_PORT_1A" Name="PORT_I2S_DAC_DATA"/>
+            <Port Location="XS1_PORT_1N" Name="PORT_I2S_ADC_DATA"/>
+            <Port Location="XS1_PORT_4A" Name="PORT_CODEC_RST_N"/>
+          </Tile>
+        </Node>
+      </Nodes>
+    </Package>
+  </Packages>
+  <JTAGChain>
+    <JTAGDevice NodeId="0"/>
+  </JTAGChain>
+
+</Network>

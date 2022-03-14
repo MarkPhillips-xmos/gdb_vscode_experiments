@@ -1,0 +1,16 @@
+GDBSRC=binutils-gdb
+GDBEXECNAME=xgdb
+
+
+build: x86-build/obj x86-build/inst
+	( cd x86-build/obj ; ../../$(GDBSRC)/configure --disable-werror --prefix=$(CWD)/x86-build/inst $(CONFIG_OPTS) \
+          --with-bugurl=http://www.xmos.com/support \
+          --disable-tui \
+          --disable-gas --disable-ld --disable-gold \
+          --disable-gdbserver \
+          --with-included-gettext ) \
+          > x86_configure.out 2>&1
+	( cd x86-build/obj ; LOADLIBES=$(XELIBS) make > x86_make.out 2>&1 )
+
+x86-build/obj x86-build/inst:
+	mkdir -p $@
